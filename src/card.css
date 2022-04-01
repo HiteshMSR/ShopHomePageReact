@@ -1,0 +1,11 @@
+.button{
+  text-align: center;
+  Margin-left: 30%
+}
+
+.idcard{
+  border:2px solid ; 
+  border-radius:20px;
+  border-color: black;
+  margin:10px
+}

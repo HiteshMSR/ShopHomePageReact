@@ -5,10 +5,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './card.css'
 
 export default function BasicCard(props) {
     return (
-      <Card sx={{ minWidth: 330}}>
+      <Card sx={{ minWidth: 330}} class="idcard">
         <CardContent>
           <img src="https://cdn.pixabay.com/photo/2016/06/29/04/39/bride-1486004__480.jpg" width="350" height="300"></img>
           <h2 align="center">{props.name}</h2>
@@ -20,7 +21,9 @@ export default function BasicCard(props) {
 
         </CardContent>
         <CardActions>
-        <Button variant="contained">Add to Cart</Button>
+          <div class="button">
+        <Button variant="contained" >Add to Cart</Button>
+        </div>
         </CardActions>
       </Card>
     );
