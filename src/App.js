@@ -14,122 +14,75 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import {useState} from 'react';
+import Grid from '@mui/material/Grid';
+import { Context } from './Context';
+import Appbar from './Appbar';
 
-function App() {
-  return (
+export default function App() {
+  const[buttonname,setButtonname] = React.useState("AddtoCart");
+  const changeButtonName=()=>{
+    if(buttonname="AddtoCart"){
+      setButtonname(buttonname="Remove")
+    }
+  }
+
+  const[items,setItems]=useState(0);
+  const incitem=()=>{
+      setItems(items+1)
+  }
+  const decitem=()=>{
+      setItems(items-1)
+  }
+return(
+  <>
   
-    <div className="App">
- 
+  <Appbar items={items} />
+  <div class="display">
+  
+      { <h1>Shop in style</h1> }
+       <p text-color="secondary">With this shop hompeage template</p> 
     </div>
-  );
+    <div class="cards">
+    <Grid container direction="row" rowSpacing={3} columnSpacing={4} justifyContent="center">
+      <Grid item >
+      <BasicCard name="Fancy Product" price="$20-$30" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item>
+      <BasicCard name="Special Item" price="$18" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item >
+      <BasicCard name="Sale Item" price="$25" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item >
+      <BasicCard name="Popular Item" price="$40" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item>
+      <BasicCard name="Sale Item" price="$25" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item>
+      <BasicCard name="Fancy Product" price="$120-$280" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item>
+      <BasicCard name="Special Item" price="$18" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item>
+      <BasicCard name="Popular Item" price="$40" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+      <Grid item >
+      <BasicCard name="Fancy Product" price="$20-$30" btname={buttonname} incitem={incitem} decitem={decitem}/>
+      </Grid>
+    </Grid>
+    </div>
+    <footer class="footer">
+      <p text-center>Copyright © Your Website 2022</p>
+    </footer>
+
+  </>
+  )
 }
 
 
-const pages = ['Home', 'About', 'Shop'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-   setAnchorElUser(null);
- };
-
-  return (
-    <AppBar position="static"> 
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-           Start Bootstrap
-
-          </Typography>
-          
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex',  md:'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none'},
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            Start Bootstrap
-          </Typography>
-           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-              {page}
-              </Button>  
-            ))
-            }
-               </Box>
-               <Button variant="contained" color="success">
- Cart
-</Button>
-       
-        </Toolbar>
-      </Container>
-    </AppBar>
 
 
-  );
-};
-export default ResponsiveAppBar;
-
-
-//export default App;
 
